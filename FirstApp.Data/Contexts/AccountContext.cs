@@ -17,8 +17,6 @@ namespace FirstApp.Data.Contexts
 
     public class AccountContext : DbContext, IAccountContext
     {
-        public IDbSet<Account> Accounts { get; set; }
-        
         public AccountContext() : base(ConfigurationManager.ConnectionStrings["scooter"].ConnectionString)
         {
         }
@@ -27,5 +25,7 @@ namespace FirstApp.Data.Contexts
         {
             base.OnModelCreating(modelBuilder);
         }
+
+        public IDbSet<Account> Accounts { get; set; }
     }
 }

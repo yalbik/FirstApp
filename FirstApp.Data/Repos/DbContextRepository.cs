@@ -9,7 +9,7 @@ using FirstApp.Data.Contexts;
 
 namespace FirstApp.Data.Repos
 {
-    class DbContextRepository<T> : IBaseRepository<T> where T : class
+    public class DbContextRepository<T> : IBaseRepository<T> where T : class
     {
         protected readonly IDbContext _context;
         protected DbSet<T> dbSet;

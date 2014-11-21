@@ -6,6 +6,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 using FirstApp.Domain.Models;
 using FirstApp.Data.Contexts;
+using FirstApp.Data.Repos;
 
 namespace FirstApp.Tests
 {
@@ -16,10 +17,18 @@ namespace FirstApp.Tests
     public class UnitTest1
     {
         [TestMethod]
-        public void TestMethod1()
+        public void Context()
         {
             var accounts = new AccountContext().Accounts.ToList();
             
+            Assert.IsTrue(accounts.Count > 0);
+        }
+
+        [TestMethod]
+        public void Repo()
+        {
+            var accounts = new AccountRepository(new AccountContext()).GetAll().ToList();
+
             Assert.IsTrue(accounts.Count > 0);
         }
     }

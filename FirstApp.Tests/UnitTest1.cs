@@ -14,19 +14,13 @@ namespace FirstApp.Tests
     public class UnitTest1
     {
         [TestMethod]
-        public void Context()
+        public void ContextAndBasicRepo()
         {
-            var accounts = new AccountContext().Accounts.ToList();
+            var context = new AccountContext();
+            var repo = new AccountRepository(context);
             
-            Assert.IsTrue(accounts.Count > 0);
-        }
-
-        [TestMethod]
-        public void Repo()
-        {
-            var accounts = new AccountRepository(new AccountContext()).GetAll().ToList();
-
-            Assert.IsTrue(accounts.Count > 0);
+            Assert.IsTrue(context.Accounts.ToList().Count() > 0);
+            Assert.IsTrue(repo.GetAll().ToList().Count() > 0);
         }
     }
 }

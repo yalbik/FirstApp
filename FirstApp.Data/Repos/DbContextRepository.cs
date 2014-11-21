@@ -19,6 +19,7 @@ namespace FirstApp.Data.Repos
             _context = context;
             dbSet = _context.Set<T>();
         }
+
         public virtual T Get(object id)
         {
             return dbSet.Find(id);
@@ -51,16 +52,10 @@ namespace FirstApp.Data.Repos
                 dbSet.Remove(entity);
         }
 
-        public virtual void Update(object id)
-        {
-            Update(dbSet.Find(id));
-        }
-
         public virtual void Update(T entity)
         {
             if (entity != null)
             {
-                dbSet.Attach(entity);
                 _context.Entry(entity).State = EntityState.Modified;
             }
         }
